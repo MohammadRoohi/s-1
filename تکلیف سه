@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+
+#define MAX 10 
+
+int main()
+{
+    char users[MAX][20] = {"ali", "reza", "sara", "maryam", "mehdi"}; 
+    int count = 5; 
+    char name[20]; 
+    printf("Enter your name:\n");
+    scanf("%s", name); 
+    bool found = false; 
+    for (int i = 0; i < count; i++) 
+    {
+        if (strcmp(users[i], name) == 0) 
+        {
+            found = true; 
+            break; 
+        }
+    }
+    if (found) 
+    {
+        printf("Welcome, %s. You have successfully logged in.\n", name); // print a welcome message
+    }
+    else 
+    {
+        if (count < MAX) 
+        {
+            strcpy(users[count], name); 
+            count++; 
+            printf("Hello, %s. You are a new user. Your name has been added to the array.\n", name); // print a greeting message
+        }
+        else 
+        {
+            printf("Sorry, %s. The array is full. You cannot be added as a new user.\n", name); // print an error message
+        }
+    }
+    return 0;
+}
